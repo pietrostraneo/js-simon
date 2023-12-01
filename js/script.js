@@ -31,13 +31,24 @@ let title = document.querySelector(`h2`)
 let memo = document.querySelector(`h5`);
 let correct = document.getElementById(`score`)
 let num_ok = document.getElementById(`num_ok`)
+let clock = document.getElementById(`time`)
 let points = 0;
+let time = 30;
+
 
 memo.innerText = game
+
+let timer = setInterval(function(){
+    clock.innerText = `Tempo rimanente: ${time--} secondi `
+}, 1000)
 
 setTimeout(function(){
     title.innerText = ""
     memo.innerText = ""
+    clock.innerText = ""
+    if(time == 0){
+        clearInterval(timer)
+    }
 }, 30000)
 
 let user_num = []
